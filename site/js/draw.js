@@ -87,14 +87,14 @@ function parkStyle(feature, resolution) {
       radius: 4 + 2 * num
     }),
     text: new ol.style.Text({
-      font: (10 + num / 2).toString() + 'px helvetica,sans-serif',
+      font: (12 + num).toString() + 'px helvetica,sans-serif',
       text: display,
       fill: new ol.style.Fill({
-        color: '#ff4040'
+        color: '#a00020'
       }),
       stroke: new ol.style.Stroke({
-        color: '#800000',
-        width: 2
+        color: '#a00020',
+        width: 1
       })
     })
   });
