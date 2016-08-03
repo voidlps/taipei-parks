@@ -2,6 +2,7 @@ var map;
 var park_layer;
 var popup;
 var park_info=d3.map();
+var all_facilities=d3.set();
 
 function initialize() {
   prepareData('facilities');
@@ -22,6 +23,7 @@ function prepareData(type) {
       var p=park_info.get(k); 
       if (!p) p=[];
       park_info.set(k,p.concat(v));
+      v.forEach(function(d){all_facilities.add(d[0]+":"+d[1]);});
     });
   });
 }
@@ -90,7 +92,7 @@ function parkStyle(feature, resolution) {
       font: (12 + num).toString() + 'px helvetica,sans-serif',
       text: display,
       fill: new ol.style.Fill({
-        color: '#a00020'
+        color: '#a02040'
       }),
       stroke: new ol.style.Stroke({
         color: '#a00020',

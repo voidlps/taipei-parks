@@ -1,3 +1,6 @@
-.clear {
+p.clear {
   clear:both;
+}
+div.container-for-float {
+  overflow:auto;
 }
