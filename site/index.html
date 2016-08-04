@@ -20,15 +20,20 @@
 <body onload="initialize()">
 <div class='panel panel-default'>
 <div id='control' class='panel-heading container-for-float'>
-  <div style='float:left'>
+  <div style='float:left;position:absolute;'>
     <div class="dropdown">
       <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="dd-facilities" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
       找設施   
       <span class="caret"></span>
       </button>
-      <ul id="list-facilities" class="dropdown-menu" aria-labelledby="dd-facilities">
+      <ul id="list-facilities" class="dropdown-menu scrollable-menu" aria-labelledby="dd-facilities">
       </ul>
     </div>
+  </div>
+  <div class="btn-group" style='float:left;margin-left:100px'>
+     <input id="searchinput" type="search" class="form-control">
+     <span id="searchclear" class="glyphicon glyphicon-remove-circle"></span>
+  </div>
   </div>
   <div style='float:right'>
     <span class='glyphicon glyphicon-share' aria-hidden='true'></span>
