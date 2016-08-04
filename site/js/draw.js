@@ -59,7 +59,7 @@ function initMap() {
   map.on('pointermove',showlonlat);
 
   var select = new ol.interaction.Select({
-    condition: ol.events.condition.pointerMove,
+    condition: ol.has.TOUCH?ol.events.condition.click:ol.events.condition.pointerMove,
     layers: [park_layer]
   });
   select.on("select", showFacilities);
@@ -100,7 +100,19 @@ function parkStyle(feature, resolution) {
       })
     })
   });
-  return style;
+  var mobile_circle = new ol.style.Style({
+    image: new ol.style.Circle({
+      fill: new ol.style.Fill({
+        color: 'rgba(0,0,0,0)'
+      }),
+      stroke: new ol.style.Stroke({
+        color: 'rgba(0,0,0,0)',
+        width: 1.25
+      }),
+      radius: 30
+    })
+  });
+  return ol.has.TOUCH?[style,mobile_circle]:style;
 }
 
 function drawParks() {
