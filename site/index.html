@@ -19,35 +19,36 @@
 </head>
 <body onload="initialize()">
 <div class='panel panel-default'>
-<div id='control' class='panel-heading container-for-float'>
-  <div style='float:left;position:absolute;'>
-    <div class="dropdown">
-      <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="dd-facilities" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+  <div id='control' class='panel-heading container-for-float'>
+    <div style='float:left;position:absolute;'>
+      <div class="dropdown">
+        <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="dd-facilities" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
       找設施   
-      <span class="caret"></span>
-      </button>
-      <ul id="list-facilities" class="dropdown-menu scrollable-menu" aria-labelledby="dd-facilities">
-      </ul>
+        <span class="caret"></span>
+        </button>
+        <ul id="list-facilities" class="dropdown-menu scrollable-menu" aria-labelledby="dd-facilities">
+        </ul>
+      </div>
+    </div>
+    <div class="btn-group" style='float:left;margin-left:100px'>
+      <input id="searchinput" type="search" class="form-control">
+      <span id="searchclear" class="glyphicon glyphicon-remove-circle"></span>
+    </div>
+    <div style='float:right'>
+      <span class='glyphicon glyphicon-share' aria-hidden='true'></span>
+      <a class="text-muted" href='https://github.com/voidlps/taipei-parks' target='_for_github'>Fork me</a>
     </div>
   </div>
-  <div class="btn-group" style='float:left;margin-left:100px'>
-     <input id="searchinput" type="search" class="form-control">
-     <span id="searchclear" class="glyphicon glyphicon-remove-circle"></span>
+  <p class='clear'/>
+  <div id='map_canvas' class='panel-body'></div>
+  <div id='status' class='panel-footer container-for-float'>
+    <h5 style='float:left'>
+      <span class='label label-primary'>資料來源</span>
+      <a class="text-muted" href='http://data.taipei/opendata/datalist/datasetMeta?oid=11b63969-a337-4f3e-b61c-954ba9ed9937' target='data.taipei'>Data.Taipei/臺北市公園設施</a>
+      <span id='data-ts' class="text-muted"></span>
+    </h5>
+    <h4><span id='loc' style='float:right' class='label label-info'></span></h4>
   </div>
-  </div>
-  <div style='float:right'>
-    <span class='glyphicon glyphicon-share' aria-hidden='true'></span>
-    <a class="text-muted" href='https://github.com/voidlps/taipei-parks' target='_for_github'>Fork me</a>
-  </div>
-</div>
-<p class='clear'/>
-<div id='map_canvas' class='panel-body'></div>
-<div id='status' class='panel-footer container-for-float'>
-  <h5 style='float:left'><span class='label label-primary'>資料來源</span> <a class="text-muted" href='http://data.taipei/opendata/datalist/datasetMeta?oid=11b63969-a337-4f3e-b61c-954ba9ed9937' target='data.taipei'>Data.Taipei/臺北市公園設施</a>
-  <span id='data-ts' class="text-muted"></span>
-  </h5>
-  <h4><span id='loc' style='float:right' class='label label-info'></span></h4>
-</div>
 </div>
 <div style="display:none">
   <div id="popup"></div>
