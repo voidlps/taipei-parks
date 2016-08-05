@@ -1,5 +1,7 @@
 var map;
 var park_layer;
+var geolocation;
+var marker_layer;
 var popup;
 var park_info=d3.map();
 var all_facilities=d3.set();
@@ -73,6 +75,23 @@ function initMap() {
   });
   map.addLayer(park_layer);
 
+  marker_layer = new ol.layer.Vector({
+    source: new ol.source.Vector({
+      features: []
+    })
+  });
+  map.addLayer(marker_layer);
+
+  if (ol.has.GEOLOCATION) {
+    geolocation = new ol.Geolocation({
+    // take the projection to use from the map's view
+      projection: map.getView().getProjection(),
+      tracking: true
+    });
+    // listen to changes in position
+    geolocation.on('change', centerOnGeolocation);
+  }
+
   popup = new ol.Overlay({
     element: document.getElementById('popup')
   });
@@ -86,6 +105,32 @@ function initMap() {
   });
   select.on("select", showFacilities);
   map.addInteraction(select);
+}
+
+function centerOnGeolocation(event) {
+  var pos=geolocation.getPosition();
+  geolocation.setTracking(false);
+  map.getView().setCenter(pos);
+  var marker = new ol.Feature({
+    geometry: new ol.geom.Point(pos),
+    name: 'geolocation'
+  });
+  marker.setStyle(new ol.style.Style({
+    image: new ol.style.Circle({
+      fill: new ol.style.Fill({
+        color: 'rgba(255,80,80,0.9)'
+      }),
+      stroke: new ol.style.Stroke({
+        color: 'rgba(255,0,0,1)',
+        width: 1.25
+      }),
+      radius: 5 
+    })
+  }));
+  var layer_source=marker_layer.getSource();
+  layer_source.clear(true);
+  layer_source.addFeature(marker);
+  layer_source.changed();
 }
 
 function showlonlat(event) {
