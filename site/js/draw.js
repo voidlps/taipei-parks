@@ -149,10 +149,10 @@ function parkStyle(feature, resolution) {
     zIndex: hit?100+num:num,
     image: new ol.style.Circle({
       fill: new ol.style.Fill({
-        color: 'rgba(51,153 ,255,0.9)'
+        color: hit?'rgba(51,153,255,0.9)':(check?'rgba(92,184,92,0.5)':'rgba(92,184,92,0.9)')
       }),
       stroke: new ol.style.Stroke({
-        color: hit?'#cc0000':'#0000cc',
+        color: hit?'#cc0000':'#007000',
         width: hit?3.0:1.25
       }),
       radius: 4 + 2 * num
@@ -161,10 +161,10 @@ function parkStyle(feature, resolution) {
       font: (12 + num).toString() + 'px helvetica,sans-serif',
       text: display,
       fill: new ol.style.Fill({
-        color: '#a02040'
+        color: 'rgba(32,64,32,0.9)'
       }),
       stroke: new ol.style.Stroke({
-        color: '#a00020',
+        color: 'rgba(12,104,12,0.9)',
         width: 1
       })
     })
