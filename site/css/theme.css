@@ -10,7 +10,7 @@ div.container-for-float {
   flex: auto;
 }
 #map_canvas {
-  height: 95%
+  height: calc(100vh - 130px)
 }
 .scrollable-menu {
     height: auto;
